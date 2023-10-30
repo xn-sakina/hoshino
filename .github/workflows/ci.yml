@@ -258,7 +258,7 @@ jobs:
           options: "-v ${{ github.workspace }}:/build -w /build"
           run: |
             set -e
-            apk add nodejs npm
+            apk add nodejs-current npm
             npm i -g pnpm@8
             pnpm i
             pnpm test
