@@ -13,6 +13,8 @@ Fast string seaching powered by Rust. ( built upon [aho-corasick](https://github
 #### `findAllMatchSync` / `findAllMatch`
 
 ```ts
+import { findAllMatchSync } from 'hoshino'
+
 const patterns = ['apple', 'maple', 'Snapple']
 const matches = findAllMatchSync({
   patterns,
@@ -36,6 +38,8 @@ assert(matchedText, 'maple')
 #### `findLeftFirstMatchSync` / `findLeftFirstMatch`
 
 ```ts
+import { findLeftFirstMatchSync } from 'hoshino'
+
 const patterns = ['apple', 'maple', 'Snapple']
 const { matched, pattern } = findLeftFirstMatchSync({
   patterns,
@@ -51,8 +55,10 @@ if (matched) {
 #### `findLeftFirstLongestMatchSync` / `findLeftFirstLongestMatch`
 
 ```ts
+import { findLeftFirstLongestMatch } from 'hoshino'
+
 const patterns = ['map', 'maple', 'Snapple']
-const { matched, pattern } = findLeftFirstMatchSync({
+const { matched, pattern } = await findLeftFirstLongestMatch({
   patterns,
   haystack: 'Nobody likes maple in their apple flavored Snapple.',
   //                      ^^^^^ finding the leftmost-longest first match
