@@ -25,7 +25,7 @@ assert(patterns[matches[0].pattern], 'maple')
 assert(patterns[matches[1].pattern], 'apple')
 assert(patterns[matches[2].pattern], 'Snapple')
 
-// index
+// index (UTF-8)
 const { start, end } = matches[0]
 const uint8Arr = new TextEncoder().encode(haystack)
 const matchedUnit8Arr = uint8Arr.slice(start, end)
