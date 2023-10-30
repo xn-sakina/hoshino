@@ -1,0 +1,11 @@
+{
+  "name": "example",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "tsx ./index.ts"
+  },
+  "devDependencies": {
+    "hoshino": "workspace:*"
+  }
+}

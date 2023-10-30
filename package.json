@@ -1,0 +1,80 @@
+{
+  "name": "hoshino",
+  "version": "1.0.0",
+  "description": "Fast string seaching powered by Rust",
+  "keywords": [
+    "string",
+    "pattern-search",
+    "pattern-match",
+    "string-search",
+    "string-match",
+    "aho-corasick"
+  ],
+  "homepage": "https://github.com/xn-sakina/hoshino#README",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xn-sakina/hoshino"
+  },
+  "license": "MIT",
+  "author": "fz6m",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "artifacts": "napi artifacts",
+    "build": "napi build --cargo-cwd . --platform --js index.js --release",
+    "build:dev": "napi build --cargo-cwd . --platform --js index.js",
+    "format:ts": "biome format --write example",
+    "prepublishOnly": "pnpm build",
+    "push": "vary push",
+    "release:only": "vary release:only",
+    "release": "vary np",
+    "release:root": "vary np --root",
+    "test": "vitest --run",
+    "vp": "vary vp"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.3.1",
+    "@changesets/cli": "^2.26.2",
+    "@napi-rs/cli": "^2.16.3",
+    "@types/lodash": "^4.14.200",
+    "@types/node": "^20.8.9",
+    "@xn-sakina/mental": "^4.0.2",
+    "@xn-sakina/vary": "^1.2.0",
+    "hoshino": "workspace:*",
+    "lodash": "^4.17.21",
+    "tsx": "^3.14.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6",
+    "zx": "^7.2.3"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@8.10.0",
+  "napi": {
+    "name": "hoshino",
+    "triples": {
+      "defaults": false,
+      "additional": [
+        "x86_64-apple-darwin",
+        "aarch64-apple-darwin",
+        "x86_64-pc-windows-msvc",
+        "aarch64-pc-windows-msvc",
+        "x86_64-unknown-linux-gnu",
+        "aarch64-unknown-linux-gnu",
+        "x86_64-unknown-linux-musl",
+        "aarch64-unknown-linux-musl"
+      ]
+    },
+    "package": {
+      "name": "@xn-sakina/hoshino"
+    }
+  }
+}

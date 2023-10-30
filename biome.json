@@ -1,0 +1,23 @@
+{
+  "formatter": {
+    "enabled": true,
+    "ignore": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/compiled/**",
+      "**/test/**"
+    ],
+    "indentStyle": "space",
+    "lineWidth": 80,
+    "indentWidth": 2
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingComma": "all"
+    }
+  },
+  "$schema": "https://biomejs.dev/schemas/1.2.2/schema.json"
+}

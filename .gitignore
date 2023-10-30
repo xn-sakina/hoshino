@@ -1,0 +1,17 @@
+/target
+node_modules
+.DS_Store
+
+# release
+/index.d.ts
+
+# .node
+/*.node
+
+/dist
+/test/tmp.ts
+
+# words
+/data
+/scripts
+/example/tmp.ts
