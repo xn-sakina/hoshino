@@ -41,7 +41,7 @@ import { findLeftFirstMatchSync } from 'hoshino'
 const patterns = ['apple', 'maple', 'Snapple']
 const haystack = 'Nobody likes maple in their apple flavored Snapple.'
 //                             ^^^^^ finding the leftmost first match
-const matches = findLeftFirstMatchSync({ patterns, haystack })
+const { matched, pattern } = findLeftFirstMatchSync({ patterns, haystack })
 
 if (matched) {
   assert(patterns[pattern], 'maple')
@@ -56,7 +56,7 @@ import { findLeftFirstLongestMatch } from 'hoshino'
 const patterns = ['map', 'maple', 'Snapple']
 const haystack = 'Nobody likes maple in their apple flavored Snapple.'
 //                             ^^^^^ finding the leftmost-longest first match
-const matches = findLeftFirstLongestMatch({ patterns, haystack })
+const { matched, pattern } = findLeftFirstLongestMatch({ patterns, haystack })
 
 if (matched) {
   assert(patterns[pattern], 'maple')
