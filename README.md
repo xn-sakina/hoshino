@@ -16,11 +16,9 @@ Fast string seaching powered by Rust. ( built upon [aho-corasick](https://github
 import { findAllMatchSync } from 'hoshino'
 
 const patterns = ['apple', 'maple', 'Snapple']
-const matches = findAllMatchSync({
-  patterns,
-  haystack: 'Nobody likes maple in their apple flavored Snapple.',
-  //                      ^ 0 ^          ^ 1 ^          ^  2  ^
-})
+const haystack = 'Nobody likes maple in their apple flavored Snapple.'
+//                             ^ 0 ^          ^ 1 ^          ^  2  ^
+const matches = findAllMatchSync({ patterns, haystack })
 
 // pattern
 assert(patterns[matches[0].pattern], 'maple')
@@ -29,7 +27,7 @@ assert(patterns[matches[2].pattern], 'Snapple')
 
 // index
 const { start, end } = matches[0]
-const uint8Arr = new TextEncoder().encode(text)
+const uint8Arr = new TextEncoder().encode(haystack)
 const matchedUnit8Arr = uint8Arr.slice(start, end)
 const matchedText = new TextDecoder().decode(matchedUnit8Arr)
 assert(matchedText, 'maple')
@@ -41,11 +39,9 @@ assert(matchedText, 'maple')
 import { findLeftFirstMatchSync } from 'hoshino'
 
 const patterns = ['apple', 'maple', 'Snapple']
-const { matched, pattern } = findLeftFirstMatchSync({
-  patterns,
-  haystack: 'Nobody likes maple in their apple flavored Snapple.',
-  //                      ^^^^^ finding the leftmost first match
-})
+const haystack = 'Nobody likes maple in their apple flavored Snapple.'
+//                             ^^^^^ finding the leftmost first match
+const matches = findLeftFirstMatchSync({ patterns, haystack })
 
 if (matched) {
   assert(patterns[pattern], 'maple')
@@ -58,11 +54,9 @@ if (matched) {
 import { findLeftFirstLongestMatch } from 'hoshino'
 
 const patterns = ['map', 'maple', 'Snapple']
-const { matched, pattern } = await findLeftFirstLongestMatch({
-  patterns,
-  haystack: 'Nobody likes maple in their apple flavored Snapple.',
-  //                      ^^^^^ finding the leftmost-longest first match
-})
+const haystack = 'Nobody likes maple in their apple flavored Snapple.'
+//                             ^^^^^ finding the leftmost-longest first match
+const matches = findLeftFirstLongestMatch({ patterns, haystack })
 
 if (matched) {
   assert(patterns[pattern], 'maple')
