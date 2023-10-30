@@ -258,7 +258,8 @@ jobs:
           options: "-v ${{ github.workspace }}:/build -w /build"
           run: |
             set -e
-            apk add nodejs-current npm
+            apk add nodejs --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main --allow-untrusted
+            apk add npm
             npm i -g pnpm@8
             pnpm i
             pnpm test
