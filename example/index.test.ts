@@ -6,9 +6,7 @@ import {
 import { test, expect } from 'vitest'
 
 const getText = (start: number, end: number, text: string) => {
-  const utf8arr = new TextEncoder().encode(text)
-  const textArr = utf8arr.slice(start, end)
-  return new TextDecoder().decode(textArr)
+  return text.slice(start, end)
 }
 
 test('findAllMatch', async () => {
@@ -19,6 +17,8 @@ test('findAllMatch', async () => {
   })
   expect(matches[0].pattern).toEqual(3)
   expect(matches.length).toEqual(3)
+  expect(getText(matches[0].start!, matches[0].end!, haystack)).toEqual('😅')
+  expect(getText(matches[1].start!, matches[1].end!, haystack)).toEqual('é')
 })
 
 test('findLeftFirstLongestMatch', async () => {
