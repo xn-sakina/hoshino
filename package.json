@@ -43,7 +43,7 @@
     "@types/lodash": "^4.14.200",
     "@types/node": "^20.8.9",
     "@xn-sakina/mental": "^4.0.2",
-    "@xn-sakina/vary": "^1.2.0",
+    "@xn-sakina/vary": "^1.2.1",
     "hoshino": "workspace:*",
     "lodash": "^4.17.21",
     "tsx": "^3.14.0",
