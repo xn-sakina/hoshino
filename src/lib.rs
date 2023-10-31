@@ -11,4 +11,3 @@ extern crate napi_derive;
 static ALLOC: mimalloc_rust::GlobalMiMalloc = mimalloc_rust::GlobalMiMalloc;
 
 pub mod find;
-pub mod utf8_to_utf16;

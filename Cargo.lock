@@ -12,6 +12,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "azusa"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "97ccb3ae4cfa012d0e1f9839be97ef30b5f4e8c6e75de3930da19f61f9006e19"
+dependencies = [
+ "unicode-width",
+]
+
+[[package]]
 name = "bitflags"
 version = "2.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -62,11 +71,11 @@ name = "hoshino"
 version = "0.0.0"
 dependencies = [
  "aho-corasick",
+ "azusa",
  "mimalloc-rust",
  "napi",
  "napi-build",
  "napi-derive",
- "unicode-width",
 ]
 
 [[package]]

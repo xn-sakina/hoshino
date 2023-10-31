@@ -1,7 +1,6 @@
 use aho_corasick::{AhoCorasick, MatchKind};
 use napi::{bindgen_prelude::AsyncTask, Env, Result, Task};
-
-use crate::utf8_to_utf16;
+use azusa::Azusa;
 
 #[napi(object)]
 #[derive(Debug, Default)]
@@ -48,7 +47,7 @@ impl FindTask {
             }
         } else {
             let info = mat.unwrap();
-            let transformer = utf8_to_utf16::source_map::Utf8ToUtf16::new(self.input.haystack.clone());
+            let transformer = Azusa::new(self.input.haystack.clone());
             let js_range = transformer.utf8_to_utf16((info.start() as u32, info.end() as u32));
             FindOutput {
                 matched: true,
@@ -67,7 +66,7 @@ impl FindTask {
         }
         let ac = builder.build(&self.input.patterns).unwrap();
         let mut matches = vec![];
-        let transformer = utf8_to_utf16::source_map::Utf8ToUtf16::new(self.input.haystack.clone());
+        let transformer = Azusa::new(self.input.haystack.clone());
         for mat in ac.find_iter(&self.input.haystack) {
             let js_range = transformer.utf8_to_utf16((mat.start() as u32, mat.end() as u32));
             matches.push(FindOutput {
