@@ -1,6 +1,8 @@
 use aho_corasick::{AhoCorasick, MatchKind};
 use napi::{bindgen_prelude::AsyncTask, Env, Result, Task};
 
+use crate::utf8_to_utf16;
+
 #[napi(object)]
 #[derive(Debug, Default)]
 pub struct Input {
@@ -46,10 +48,12 @@ impl FindTask {
             }
         } else {
             let info = mat.unwrap();
+            let transformer = utf8_to_utf16::source_map::Utf8ToUtf16::new(self.input.haystack.clone());
+            let js_range = transformer.utf8_to_utf16((info.start() as u32, info.end() as u32));
             FindOutput {
                 matched: true,
-                start: Some(info.start() as i64),
-                end: Some(info.end() as i64),
+                start: Some(js_range.0 as i64),
+                end: Some(js_range.1 as i64),
                 pattern: Some(info.pattern().as_u64() as i64),
             }
         }
@@ -63,11 +67,13 @@ impl FindTask {
         }
         let ac = builder.build(&self.input.patterns).unwrap();
         let mut matches = vec![];
+        let transformer = utf8_to_utf16::source_map::Utf8ToUtf16::new(self.input.haystack.clone());
         for mat in ac.find_iter(&self.input.haystack) {
+            let js_range = transformer.utf8_to_utf16((mat.start() as u32, mat.end() as u32));
             matches.push(FindOutput {
                 matched: true,
-                start: Some(mat.start() as i64),
-                end: Some(mat.end() as i64),
+                start: Some(js_range.0 as i64),
+                end: Some(js_range.1 as i64),
                 pattern: Some(mat.pattern().as_u64() as i64),
             });
         }
