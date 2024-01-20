@@ -28,6 +28,7 @@
     "build": "napi build --cargo-cwd . --platform --js index.js --release",
     "build:dev": "napi build --cargo-cwd . --platform --js index.js",
     "format:ts": "biome format --write example",
+    "format": "cargo fmt",
     "prepublishOnly": "pnpm build",
     "push": "vary push",
     "release:only": "vary release:only",

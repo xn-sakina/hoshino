@@ -237,6 +237,35 @@ switch (platform) {
           loadError = e
         }
         break
+      case 'riscv64':
+        if (isMusl()) {
+          localFileExisted = existsSync(
+            join(__dirname, 'hoshino.linux-riscv64-musl.node')
+          )
+          try {
+            if (localFileExisted) {
+              nativeBinding = require('./hoshino.linux-riscv64-musl.node')
+            } else {
+              nativeBinding = require('@xn-sakina/hoshino-linux-riscv64-musl')
+            }
+          } catch (e) {
+            loadError = e
+          }
+        } else {
+          localFileExisted = existsSync(
+            join(__dirname, 'hoshino.linux-riscv64-gnu.node')
+          )
+          try {
+            if (localFileExisted) {
+              nativeBinding = require('./hoshino.linux-riscv64-gnu.node')
+            } else {
+              nativeBinding = require('@xn-sakina/hoshino-linux-riscv64-gnu')
+            }
+          } catch (e) {
+            loadError = e
+          }
+        }
+        break
       default:
         throw new Error(`Unsupported architecture on Linux: ${arch}`)
     }
@@ -252,12 +281,13 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { findLeftFirstMatchSync, findMatchSync, findLeftFirstLongestMatchSync, findAllMatchSync, findAllMatch, findLeftFirstLongestMatch, findMatch, findLeftFirstMatch } = nativeBinding
+const { findLeftFirstMatchSync, findMatchSync, findLeftFirstLongestMatchSync, findAllMatchSync, loadPatterns, findAllMatch, findLeftFirstLongestMatch, findMatch, findLeftFirstMatch } = nativeBinding
 
 module.exports.findLeftFirstMatchSync = findLeftFirstMatchSync
 module.exports.findMatchSync = findMatchSync
 module.exports.findLeftFirstLongestMatchSync = findLeftFirstLongestMatchSync
 module.exports.findAllMatchSync = findAllMatchSync
+module.exports.loadPatterns = loadPatterns
 module.exports.findAllMatch = findAllMatch
 module.exports.findLeftFirstLongestMatch = findLeftFirstLongestMatch
 module.exports.findMatch = findMatch
