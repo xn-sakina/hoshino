@@ -2,6 +2,7 @@ import {
   findAllMatch,
   findLeftFirstLongestMatch,
   findLeftFirstMatch,
+  loadPatterns,
 } from 'hoshino'
 import { test, expect } from 'vitest'
 
@@ -57,4 +58,28 @@ test('findLeftFirstMatch - caseInsensitive', async () => {
   expect(result.matched).toEqual(true)
   expect(result.pattern).toEqual(4)
   expect(getText(result.start!, result.end!, haystack)).toEqual('c')
+})
+
+test('if not load patterns, should throw error', async () => {
+  await expect(() =>
+    findLeftFirstMatch({
+      haystack: '内容',
+    }),
+  ).rejects.toThrow('patterns is required')
+})
+
+test('preload patterns', async () => {
+  loadPatterns(['1', '文字'])
+  const result = await findLeftFirstMatch({
+    haystack: '一段文字123一段文字',
+  })
+  expect(result.matched).toEqual(true)
+  expect(result.pattern).toEqual(1)
+  const result2 = await findAllMatch({
+    haystack: '一段文字123一段文字',
+  })
+  expect(result2.length).toEqual(3)
+  expect(result2[0].pattern).toEqual(1)
+  expect(result2[1].pattern).toEqual(0)
+  expect(result2[2].pattern).toEqual(1)
 })
