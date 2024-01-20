@@ -37,18 +37,18 @@
     "vp": "vary vp"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.3.1",
-    "@changesets/cli": "^2.26.2",
-    "@napi-rs/cli": "^2.16.3",
-    "@types/lodash": "^4.14.200",
-    "@types/node": "^20.8.9",
-    "@xn-sakina/mental": "^4.0.2",
-    "@xn-sakina/vary": "^1.2.1",
+    "@biomejs/biome": "^1.5.2",
+    "@changesets/cli": "^2.27.1",
+    "@napi-rs/cli": "^2.17.0",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.11.5",
+    "@xn-sakina/mental": "^4.2.1",
+    "@xn-sakina/vary": "^1.3.4",
     "hoshino": "workspace:*",
     "lodash": "^4.17.21",
-    "tsx": "^3.14.0",
-    "typescript": "^5.2.2",
-    "vitest": "^0.34.6",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1",
     "zx": "^7.2.3"
   },
   "engines": {
@@ -57,7 +57,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "packageManager": "pnpm@8.10.0",
+  "packageManager": "pnpm@8.14.0",
   "napi": {
     "name": "hoshino",
     "triples": {
