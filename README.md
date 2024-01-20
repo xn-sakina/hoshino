@@ -60,6 +60,17 @@ if (matched) {
 }
 ```
 
+#### `loadPatterns`
+
+```ts
+import { loadPatterns } from 'hoshino'
+
+loadPatterns(['map', 'maple', 'Snapple'])
+// use findLeftFirstMatchSync({ haystack })
+// use findAllMatchSync({ haystack })
+// ...
+```
+
 ### License
 
 MIT
