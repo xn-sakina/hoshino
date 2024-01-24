@@ -71,6 +71,21 @@ loadPatterns(['map', 'maple', 'Snapple'])
 // ...
 ```
 
+### Troubleshooting (wasm in browser)
+
+#### `SharedArrayBuffer` is not defined
+
+Add `COOP` and `COEP` response headers:
+
+```bash
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Embedder-Policy: require-corp
+```
+
+#### Failed to execute 'decode' on 'TextDecoder': The provided ArrayBufferView value must not be shared.
+
+Add `COOP` and `COEP` to enable the `SharedArrayBuffer`, or see [stackoverflow#65743480](https://stackoverflow.com/questions/65743480/uncaught-typeerror-failed-to-execute-decode-on-textdecoder-the-provided-va) to patch `@napi-rs/wasm-runtime`.
+
 ### License
 
 MIT
