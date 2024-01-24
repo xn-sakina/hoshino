@@ -12,6 +12,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "alloc"
+version = "0.0.0"
+dependencies = [
+ "mimalloc-rust",
+]
+
+[[package]]
 name = "azusa"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -71,8 +78,8 @@ name = "hoshino"
 version = "0.0.0"
 dependencies = [
  "aho-corasick",
+ "alloc",
  "azusa",
- "mimalloc-rust",
  "napi",
  "napi-build",
  "napi-derive",
@@ -81,9 +88,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.149"
+version = "0.2.152"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a08173bc88b7955d1b3145aa561539096c421ac8debde8cbc3612ec635fee29b"
+checksum = "13e3bf6590cbc649f4d1a3eefc9d5d6eb746f5200ffb04e5e142700b8faa56e7"
 
 [[package]]
 name = "libloading"
@@ -123,9 +130,9 @@ dependencies = [
 
 [[package]]
 name = "napi"
-version = "2.14.2"
+version = "2.14.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2fc1cb00cde484640da9f01a124edbb013576a6ae9843b23857c940936b76d91"
+checksum = "902495f6b80f53f8435aefbbd2241c9c675fa239cd7e5f8e28fb57f3b69ecd09"
 dependencies = [
  "bitflags",
  "ctor",
